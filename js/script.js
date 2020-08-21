@@ -14,4 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function showTabContent(i) {
+        tabsContent[i].style.display = 'block';
+        tabs[i].classList.add('tabheader__item_active');
+    }
+
+    
+
 });
