@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Alina-Kovaleva/Food/issues"
   },
-  "homepage": "https://github.com/Alina-Kovaleva/Food#readme"
+  "homepage": "https://github.com/Alina-Kovaleva/Food#readme",
+  "devDependencies": {
+    "json-server": "^0.16.1"
+  }
 }
