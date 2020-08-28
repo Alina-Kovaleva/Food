@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //     'Content-type': 'application/json' 
                 // },
                 body: formData
-            })
+            }).then(data => data.text())
             .then(data => {
                 console.log(data);
                 showThanksModal(message.success);
