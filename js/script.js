@@ -483,7 +483,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Calorie calc
 
     const result = document.querySelector('.calculating__result span');
-    let sex, height, weight, age, ratio;
+    let sex = 'female',
+        height,
+        weight,
+        age,
+        ratio = '1.375';
 
     function calcTotal() {
         if (!sex || !height || !weight || !age || !ratio) {
