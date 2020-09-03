@@ -1,7 +1,7 @@
 function timer(){
     //Timer
 
-    const deadline = '2020-08-26';
+    const deadline = '2020-09-26';
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
