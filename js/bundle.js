@@ -305,6 +305,9 @@ function cards() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal */ "./js/modules/modal.js");
+
+
 function forms() {
     // Forms
 
@@ -364,7 +367,7 @@ function forms() {
         const prevModalDialog = document.querySelector('.modal__dialog');
 
         prevModalDialog.classList.add('hide');
-        openModal();
+        Object(_modal__WEBPACK_IMPORTED_MODULE_0__["openModal"])();
 
         const thanksModal = document.createElement('div');
         thanksModal.classList.add('modal__dialog');
@@ -380,7 +383,7 @@ function forms() {
             thanksModal.remove();
             prevModalDialog.classList.add('show');
             prevModalDialog.classList.remove('hide');
-            closeModal();
+            Object(_modal__WEBPACK_IMPORTED_MODULE_0__["closeModal"])();
         }, 4000);
     }
 }
@@ -393,46 +396,51 @@ function forms() {
 /*!*****************************!*\
   !*** ./js/modules/modal.js ***!
   \*****************************/
-/*! exports provided: default */
+/*! exports provided: default, closeModal, openModal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function modal() {
-    //Modal 
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeModal", function() { return closeModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openModal", function() { return openModal; });
+function openModal(modalSelector) {
+    const modal = document.querySelector(modalSelector);
 
-    const modalTrigger = document.querySelectorAll('[data-modal]'),
-          modal = document.querySelector('.modal');
+    modal.classList.add('show');
+    modal.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
+    clearInterval(modalTimerId);
+}      
+
+function closeModal(modalSelector) {
+    const modal = document.querySelector(modalSelector);
+
+    modal.classList.add('hide');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+function modal(triggerSelector, modalSelector) {
+
+    const modalTrigger = document.querySelectorAll(triggerSelector),
+          modal = document.querySelector(modalSelector);
         //   modalCloseBtn = document.querySelector('[data-close]');
 
-    function openModal() {
-        modal.classList.add('show');
-        modal.classList.remove('hide');
-        document.body.style.overflow = 'hidden';
-        clearInterval(modalTimerId);
-    }      
-    
-    function closeModal() {
-        modal.classList.add('hide');
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-    }
-
     modalTrigger.forEach(btn => {
-        btn.addEventListener('click', openModal);
+        btn.addEventListener('click', () => openModal(modalSelector));
     });
 
     // modalCloseBtn.addEventListener('click', closeModal);
 
     modal.addEventListener('click', (e) => {
         if (e.target === modal || e.target.getAttribute('data-close') == '') {
-            closeModal();
+            closeModal(modalSelector);
         }
     });
 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Escape' && modal.classList.contains('show')) {
-            closeModal();
+            closeModal(modalSelector);
         }
     });
 
@@ -440,7 +448,7 @@ function modal() {
 
     function showModalByScroll() {
         if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
-            openModal();
+            openModal(modalSelector);
             window.removeEventListener('scroll',showModalByScroll);
         }
     }
@@ -449,6 +457,9 @@ function modal() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (modal);
+
+
+
 
 /***/ }),
 
@@ -809,7 +820,7 @@ __webpack_require__.r(__webpack_exports__);
 
 document.addEventListener('DOMContentLoaded', () => {
     Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
-    Object(_modules_modal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    Object(_modules_modal__WEBPACK_IMPORTED_MODULE_1__["default"])('[data-modal]', '.modal');
     Object(_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])();
     Object(_modules_cards__WEBPACK_IMPORTED_MODULE_3__["default"])();
     Object(_modules_calc__WEBPACK_IMPORTED_MODULE_4__["default"])();
