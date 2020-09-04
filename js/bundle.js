@@ -830,7 +830,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Object(_modules_timer__WEBPACK_IMPORTED_MODULE_2__["default"])();
     Object(_modules_cards__WEBPACK_IMPORTED_MODULE_3__["default"])();
     Object(_modules_calc__WEBPACK_IMPORTED_MODULE_4__["default"])();
-    Object(_modules_forms__WEBPACK_IMPORTED_MODULE_5__["default"])();
+    Object(_modules_forms__WEBPACK_IMPORTED_MODULE_5__["default"])(modalTimerId);
     Object(_modules_slider__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 
